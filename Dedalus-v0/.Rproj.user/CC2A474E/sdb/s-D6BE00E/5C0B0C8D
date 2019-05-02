@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "/**\n * @file game.h\n * @author Chevelu Jonathan (jonathan.chevelu@irisa.fr)\n * @brief Dedalus game controller.\n * @version 0.1\n * @date 2019-01-25\n *\n * @copyright Copyright (c) 2019\n *\n */\n#ifndef GAME_H\n#define GAME_H\n\n#include \"character.h\"\n#include \"config.h\"\n#include \"map.h\"\n\n/**\n * @brief Default display stream for the Game Master.\n *\n */\n#define DISPLAY stdout\n\n/**\n * @brief Structure of a game.\n *\n */\ntypedef struct game {\n  const char* gameName;  ///< The name of the level (i.e. the map name).\n  map_t* pMap;           ///< The map.\n  pos_t* exitA;          ///< Array of exits positions.\n  size_t nbExit;         ///< Number of exits.\n  character_t* playerA;  ///< Array of players.\n  size_t nbPlayerAlive;  ///< Number of players still alive.\n  size_t\n      nbPlayerOnBoard;  ///< Number of players on board (not dead and not out).\n  size_t nbPlayer;      ///< Number of players.\n  character_t* minotaurA;  ///< Array of minotaurs.\n  size_t nbMinotaur;       ///< Number of minotaurs.\n  size_t nbMinotaurAlive;  ///< Number of minotaurs still alive.\n  bool finalLevel;         ///< Is this level a final level (contains minotaurs).\n  bool gameInfo;           ///< Display more precise game informations.\n  int maxMoves;            ///< Maximum number of moves per player.\n  int steps;               ///< Number of steps since the beginning of the game.\n  int delay;               ///< Delay (in us) between tow steps.\n  bool interactive;        ///< Ask for interactive actions from GM.\n} game_t;\n\n/**\n * @brief Initialize a game.\n *\n * @param[out] pGame The game to initialise.\n * @param[in,out] pConf Configuration structure for the game.\n * @param[in] gameName Name for the game.\n * @param[in,out] pMap Initial map of the game.\n * @param[in] pDefHealth Default health for players.\n * @param[in] pAi Default AI for players.\n * @param[in] mDefHealth Default health for minotaurs.\n * @param[in] mAi Default AI for minotaurs.\n * @return true If the game is correctly initialised.\n * @return false If there is some mistakes (no exit, no player ...).\n */\nbool game_init(game_t* pGame,\n               config_t* pConf,\n               const char* gameName,\n               map_t* pMap,\n               int pDefHealth,\n               ai_t pAi,\n               int mDefHealth,\n               ai_t mAi);\n\n/**\n * @brief Run an initialised game.\n *\n * @param[in, out] pGame The game to start.\n */\nvoid game_start(game_t* pGame);\n\n/**\n * @brief Clear all allocated content of a game.\n *\n * @param[in, out] pGame The game to clear.\n */\nvoid game_delete(game_t* pGame);\n\n#endif  // End GAME_H\n",
+    "created" : 1554891408212.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1433308826",
+    "id" : "5C0B0C8D",
+    "lastKnownWriteTime" : 1551779082,
+    "last_content_update" : 1551779082,
+    "path" : "~/Dedalus/Dedalus-v2/src/game.h",
+    "project_path" : null,
+    "properties" : {
+        "source_window_id" : ""
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "h"
+}

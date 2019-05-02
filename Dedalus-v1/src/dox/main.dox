@@ -1,0 +1,277 @@
+/**
+\mainpage Subject : Let's play in the dedalus!
+
+\tableofcontents
+
+\section seq_dedalus Dedalus
+
+Le jeu Dedalus permet de voir des personnages avec une IA (intelligence artificielle) tenter de survivre dans le labyrinthe.
+Il peut y avoir plusieurs joueurs simultanés et leur but est de trouver le chemin vers le prochain niveau. 
+
+Le dernier niveau est particulier puisque avant d'aller à la sortie, les joueurs doivent tuer l'ensemble des Minotaures présents. 
+
+Malheureusement, les joueurs fatiguent à chercher la sortie et risquent de mourir de faim après un certain temps.
+En revanche, ils sont aidés par un fil d'Ariane et par un GPS qui indique la direction de leur cible : le Minotaure le plus proche ou la sortie la plus proche.
+
+Le jeu et les Minotaures sont contrôlés par le Maître du jeu qui a pour objectif de ne laisser aucun joueur survivre.
+
+\section seq_target Objectif du projet 
+
+Le but de ce projet n'est pas de réaliser la meilleure IA (ni pour les joueurs ni pour les Minotaures). Votre but est d'améliorer le moteur de jeu en utilisant des outils de programmation parallèle et de remplacement de code. À la fin, le jeu devra être plus automatisé et s'exécuter sur différents processus ayant chacun leur rôle à jouer.
+
+\section seq_eval Évaluation
+
+Cette section décrit très succinctement le contenu attendu dans ce projet.
+<b> Cette section constitue une base de travail et ne se substitue pas aux consignes données en cours par votre enseignant. </b>
+
+Pour ce projet, vous devrez mettre en avant et vous serez évalués sur vos capacités à :
+\li comprendre du code avancé fourni ;
+\li restituer les différents éléments pratiques et théoriques que vous avez vus en cours ;
+\li mettre en œuvre ces éléments dans un code efficace, "propre" et documenté ;
+
+Deux rendus sont attendus à l'issu de ce projet : un rapport et le code source réalisé pour mener à bien les expériences.
+
+\subsection rapport Le rapport
+
+\subsubsection consid Considérations générales
+
+Sachez qu'une part non négligeable de votre note sera liée à la forme du rapport, au discours que vous y développerez et au respect des présentes consignes. 
+Ces points sont aussi importants que les résultats bruts que vous pourriez placer dans le rapport.
+
+Voici quelques points généraux que vous devez prendre en compte. Le non-respect de ces consignes sera sanctionné. Les pénalités indiquées correspondent au nombre de points retirés de la note. Ce ne sont que des valeurs indicatives et elles ne sont pas exhaustives.
+\li (pénalité : note = 0 -- conseil de discipline) Votre rapport comme votre code est un travail \b personnel. 
+	Tout partage d'éléments significatifs (sous forme de copier-coller) avec un autre étudiant sera fortement sanctionné (pour les deux étudiants concernés sans distinction). Il en sera de même quant à l'utilisation abusive de ressources externes (plagiat Internet ou d'ouvrages).
+\li (pénalité : -1 par "remplissage") Le rapport doit être présenté comme une \b documentation technique. 
+	Avant d'inclure un élément dans votre rapport, demandez-vous systématiquement s'il aide le lecteur à <b>comprendre les mécanismes</b> que vous avez réalisés.
+	En particulier, évitez les captures d'écrans inutiles (une page pour afficher une ligne de commande est sans intérêt).
+\li (pénalité : -1) Un graphique sans titre ni légende ou échelle est illisible. Facilitez le travail de votre lecteur en incluant ces informations et en indiquant ce qu'il y a à comprendre sur le graphique (s'il n'y a rien, alors le graphique ne devrait pas être dans votre rapport).  
+\li (pénalité : -4) Supposez que le lecteur de votre rapport n'a pas accès à ce sujet et ne le connaît pas. Les sections suivantes ne sont pas des questions et sont là pour vous guider dans les différents points à aborder et les sujets à traiter. Il sera jugé \b inadmissible que votre rapport comporte des passages tels que : "Pour la question 3.5 1, on a fait avec une boucle for".
+\li (pénalité : -2) Respectez au maximum la langue française pour être compréhensible : relisez-vous et faites-vous relire ! De même, vous êtes de futurs ingénieurs donc utilisez un vocabulaire précis et technique : un programme ne "plante" pas et n'a pas de "bug" qui le fait "crasher" et un ordinateur ne "rame" pas !
+\li (pénalité : -2) Ce rapport n'est pas un journal. De façon générale, essayez de faire la part des choses entre les aspects techniques inintéressants ("j'ai tapé la commande ... puis la commande ... et ça marche") qui n'ont pas leur place dans ce rendu et les concepts pertinents ("La synchronisation entre les processus est réalisée dans les fonctions ... et ...").
+
+
+\subsubsection struct_rendu Structure du rapport (pénalité : -5)
+ 
+Le rapport devra être constitué d'aux plus 10 pages rédigées.
+
+En plus des points précédents, un rapport technique, comme tout document, doit s’articuler autour de trois parties :
+\li l’introduction qui présente le contexte, la problématique et le contenu du document ;
+\li le développement qui correspond au cœur du rapport. En particulier, vous prendrez soin d'expliquer les différents choix de mise en œuvre et préciserez le fonctionnement de vos programmes ;
+\li la conclusion qui synthétise le contenu du document et présente des perspectives ouvertes par les travaux présentés.
+
+ 
+En particulier, l'introduction doit présenter le contexte \b technique de votre rapport (et pas que vous êtes à l'ENSSAT et que vous êtes en projet de systèmes d'exploitation 2). Il faut ensuite définir la problématique de votre étude, le but recherché et enfin annoncer le plan du rapport qui doit être lié à la structure de votre discours.
+
+Quant à la conclusion, elle doit comporter une synthèse "globale" (c'est un pléonasme volontaire) du contenu du rapport et porter une analyse générale sur ce qui a été fait et observé.
+Elle doit se terminer en présentant des perspectives ouvertes par votre travail (impacts, points à confirmer, améliorations possibles, ...).
+Votre avis sur ce que vous avez appris à titre personnel, votre satisfaction ou insatisfaction personnelle à faire ce projet ou à suivre ce cours, vos difficultés d'organisation personnelle ("le chat a mangé mon ordinateur") ou toute autre considération sur l'âge du capitaine et le sens du vent sont superflus dans un rapport technique.
+
+\subsubsection forme_rendu Forme du rapport (pénalité : note/2)
+
+La forme de votre rapport est importante. 
+Comme indiqué précédemment, les règles de grammaire et de typographie de la langue dans laquelle est écrite le rapport doivent être respectées. Le texte doit être \b justifié (et non pas aligné à gauche). 
+L’utilisation des outils LaTeX est un bon moyen d'assurer uniformité et respect de la typographie.
+
+Quels que soient les moyens utilisés pour produire votre document, vous devez fournir un rendu lisible sur un maximum de supports. 
+Le fichier contenant votre rapport devra donc \b obligatoirement être au format PDF.
+Le rapport sera constitué d'un fichier au format \b PDF nommé sur le modèle suivant :
+\verbatim 
+ 	[nom]_[prénom]_[nom de l'encadrant de TP].pdf
+\endverbatim 
+Malgré la présence de vos noms dans le nom du fichier, il est nécessaire de les inclure \b aussi sur la première page du rapport !
+
+
+\subsubsection contenu_rendu Contenu du rapport (la note)
+
+L'objectif de votre rapport est de préciser vos choix de mise en œuvre pour les différentes versions du projet demandé (voir à la section \ref seq_todo).
+Vous préciserez les fonctions modifiées et comment s'intègrent vos algorithmes dans le code existant.
+
+Un soin particulier sera apporté pour expliquer les échanges entre les différents processus et comment ils sont articulés.
+Pour chaque nouvelle version du projet, vous présenterez l'arbre des processus de votre programme et les différents mécanismes du cours utilisés.
+
+\subsection seq_eval_code Le code source (pénalité : note/2)
+
+L'\b ensemble du code utilisé devra être fourni au sein d'un unique fichier compressé et nommé sur le modèle suivant :
+\verbatim 
+ 	[nom]_[prénom]_[nom de l'encadrant de TP].zip
+\endverbatim 
+Ce code devra être organisé, commenté et correctement indenté.
+Il sera considéré comme inadmissible la remise d'un code ne compilant pas.
+De plus, la séparation des différentes versions du projet dans des sous-dossiers nommés adéquatement est vivement recommandée.
+La présence d'un fichier README à la racine de votre rendu et décrivant comment utiliser vos sources est également souhaitée.
+Ces consignes sont primordiales et leur non-respect impactera lourdement la notation finale.
+
+\subsection orga_rendu Organisation
+
+Pour ce TP, vous disposerez au minimum de 6 heures encadrées.
+Mettez ces périodes à profit pour poser des questions à vos chargés de TP.
+Malgré cela, l'achèvement de ce travail n'est pas réalisable pendant le seul temps encadré. 
+Vous devrez probablement travailler en dehors des séances prévues pour ce TP. 
+
+La date de rendu est fixée au \deadline  pour l'ensemble des groupes.
+Aucun retard ou report n'est possible et la non-remise du rapport ou du code dans les temps entraînera la note de 0.
+Encore une fois, compte tenu des délais et du temps encadré, aucune excuse organisationnelle ne sera acceptée et la remise d'un document bâclé sera traitée sans complaisance.
+
+\section seq_dispo Matériel et outils disponibles
+
+Pour ce projet, une version initiale du jeu est fournie. Vous trouverez une documentation des fonctions utilisables dans l'onglet "Files" de ce document.
+
+Le code fourni utilise quelques outils qu'il peut être utile de connaître et d'utiliser : 
+\li Cette documentation est produite à l'aide de [\b Doxygen.](http://www.doxygen.nl/) Il vous est demandé de documenter aussi vos fonctions la même manière, en plus des commentaires usuels du code.
+\li \b Attention, si vous êtes sur une machine trop ancienne (comme les machines de TP ENSSAT), vous ne pouvez pas utiliser build.sh. Vous devez utiliser le Makefile fourni. À la place, vous utiliserez [\b Make.](https://www.gnu.org/software/make//). Pour ce faire, utiliser les commandes suivantes pour compiler :
+\verbatim
+ $ make
+ $ make doc
+\endverbatim
+\li le script build.sh ne fait que des appels basiques au moteur de production (\a build \a automation) [\b CMake.](https://cmake.org/) en utilisant le fichier de configuration CMakeLists.txt. En particulier, un fichier \a .c ou \a .h ajouté dans le répertoire ./src/ ou un de ses sous-répertoires sera automatiquement intégré à la chaîne de compilation.
+\li Si vous observez les sources du programme principal dedalus.c, vous constatez que le code présent dans la fonction ::main n'est utilisé que pour analyser les différentes options (via la méthode ::read_parameters), charger les modèles et lancer le jeu.
+L'analyse des options est assistée par l'utilisation de la bibliothèque [\b getopt.](http://en.wikipedia.org/wiki/Getopt) Il vous est recommandé de l'utiliser également.
+
+\section seq_demo Utilisation de la démonstration 
+
+Pour compiler les sources, placez-vous dans le répertoire racine du projet et lancez la commande suivante :
+\verbatim 
+ 	  $ ./build.sh
+\endverbatim 
+Le script de compilation comporte plusieurs options consultables avec la commande :
+\verbatim 
+ 	  $ ./build.sh -h
+\endverbatim 
+Si vous n'avez pas la bonne version de \b Cmake (machine de TP ENSSAT) vous pouvez faire : 
+\verbatim 
+ 	  $ ./make
+\endverbatim 
+
+
+En l'état, cette opération produit un unique fichier binaire disponible dans le sous-répertoire bin et nommé "Dedalus".
+L'usage de ce binaire est décrit par une aide accessible grâce à l'option "-h".
+\verbatim 
+ 	  $ ./bin/Dedalus -h
+\endverbatim 
+
+Un exemple d'utilisation du jeu pourra être :
+\verbatim 
+ 	  $ ./bin/Dedalus -m ./data/map_mini_f_mult -M 40 -d 100000
+\endverbatim 
+
+De plus, un exemple de réalisation (au format binaire) des différentes versions attendues est disponible dans le répertoire "./bin". Il vous donnera des indications sur les comportements souhaités. Notez qu'ils ne définissent pas un canon et que vous pouvez proposer vos propres variations (et les explications adéquates dans le rapport).
+Ces binaires ont été compilés pour les machines de TP de l'ENSSAT. Ils ne sont probablement pas compatibles sur d'autres machines.
+Vous pouvez les tester comme suit : 
+\verbatim 
+ 	  $ ./bin/Dedalus-v4 -m ./data/map_mini_f_mult -M 40 -d 100000
+\endverbatim 
+
+La présente documentation peut être recompilée avec la commande suivante :
+\verbatim 
+ 	  $ ./build.sh --doc
+\endverbatim 
+Si vous n'avez pas la bonne version de \b Cmake (machine de TP ENSSAT) vous pouvez faire : 
+\verbatim 
+ 	  $ ./make doc
+\endverbatim 
+	 
+\subsection seq_prep_test Tester la démonstration
+
+La démonstration propose plusieurs fonctionnalités et utilise un code non trivial. 
+Avant de coder vos versions du jeu, prenez le temps d'analyser et d'essayer ce code.
+N'hésitez à poser des questions dessus pour avoir des éclaircissements.
+	 
+\section seq_todo Travail à réaliser 
+
+Jusqu'à \b cinq versions du jeu sont attendues. Elles sont triées par ordre de difficulté et chaque version est la suite de la version précédente.
+La note entre parenthèses vous indique votre note \b maximale si vous ne réalisez "que" la version associée \b et les versions précédentes \b parfaitement.
+
+\subsection v0 Version 0  (note maximale : 0/20)
+	La version 0 correspond au code qui vous est fourni.
+
+\subsection v1 Version 1 (note maximale : 8/20)
+
+En vous appuyant sur la V0, vous ferez en sorte que l'utilisateur lançant le jeu n'ait plus besoin de l'option "-p". Un nombre d'affichage adéquat s'ouvrira automatiquement pour chaque joueur. Vous devrez fermer (tuer) automatiquement chaque terminal à la fin du jeu.
+
+Voici des pistes/indices qui peuvent vous être utiles. Ce ne sont pas des consignes et vous pouvez vous en affranchir.
+
+Aides :
+\li Il est fortement conseiller d'utiliser "Xterm" comme terminal contenant chaque affichage.
+\li Xterm dispose d'une option pour dimensionner et positionner la fenêtre ("-geometry")
+\li la méthode ::character_init est capable de trouver directement si l'affichage doit se faire dans le processus fils d'un autre processus (Xterm vs Bash).
+\li La modification des fichiers config.c; config.h; game.c et dedalus.c devrait être suffisante.
+\li Pour tuer un processus de pid \b ID, vous pouvez faire appel au programme  \b kill vu en cours.
+
+Une démonstration est disponible : 
+\verbatim 
+ 	  $ ./bin/Dedalus-v1 -m ./data/map_mini_f_mult -M 40 -d 100000
+\endverbatim 
+
+\subsection v2 Version 2 (note maximale : 12/20)
+
+Cette version reprend les bases de la V1. En revanche, ici, les propositions de mouvement des différentes IA vont être réalisées en parallèle dans différents processus afin de gagner du temps. Les mouvements des personnages restent synchrones.
+
+Aides : 
+\li On peut utiliser le code de retour d'un processus (qui est compris entre 0 et 255) pour retourner de façon encodée le mouvement du personnage et l'information de triche calculée par la fonction ::character_propose_move.
+\li La modification du fichier game.c devrait être suffisante.
+\li Une solution utilisant "waitpid" est plus simple mais fait que les joueurs déclarés en premier sont prioritaires en cas de conflit.
+\li Une solution plus complexe utilisant "wait" permet de donner la priorité à l'IA la plus rapide.
+
+Point à préciser dans votre rapport : dans la V2, que se passe-t-il lorsque vous commentez la ligne 44 du fichier ai_random.c ? C'est à dire : 
+\verbatim
+  srand(time(NULL) * getpid() * rand());
+\endverbatim
+Pourquoi ce comportement ?
+
+Une démonstration est disponible : 
+\verbatim 
+ 	  $ ./bin/Dedalus-v2 -m ./data/map_mini_f_mult -M 40 -d 100000
+\endverbatim 
+
+\subsection v3 Version 3 (note maximale : 16/20)
+
+En adaptant la V2, proposez une version asynchrone du jeu. Ainsi, la boucle principale de ::game_start attend qu'un personnage indique le mouvement qu'il souhaite faire et elle le traite avant d'attendre une nouvelle demande d'un personnage. Une IA plus rapide pourra donc jouer plus souvent qu'une IA lente.
+
+Aides :
+\li Au lieu de traiter tous les personnages en même temps, il suffit de faire tous les traitements d'un personnage directement.
+\li La modification du fichier game.c devrait être suffisante.
+\li La gestion des conflits devrait être beaucoup plus simple.
+\li Attention, une IA peut retourner un déplacement pour un personnage alors que celui-ci est mort en combat.
+\li Il peut être pratique de vous définir une structure contenant un "lien" vers le personnage considéré, le pid du processus calculant son mouvement et le résultat du calcul.
+\li Ne pas oublier de relancer une demande de mouvement uniquement pour le personnage qui vient de jouer, mais après avoir fait le mouvement.
+\li Attention aux fuites mémoires.
+
+Une démonstration est disponible : 
+\verbatim 
+ 	  $ ./bin/Dedalus-v3 -m ./data/map_mini_f_mult -M 40 -d 100000
+\endverbatim 
+
+\subsection v4 Version 4 (note maximale : 20/20)
+
+En adaptant la V3, faites en sorte qu'un combat n'empêche pas les autres personnages de se déplacer. Le combat est donc calculé et affiché par un processus dédié. Vous pourrez proposer une version simplifiée de cela en faisant en sorte que seul le premier combat soit non bloquant. Si un deuxième combat simultané devait avoir lieu, alors vous bloquez \b tout en attendant que le premier combat se termine. C'est cette version qui est présentée dans la démonstration. Vous avez évidemment de droit de proposer une solution sans cette restriction.
+
+Aides :
+\li Cette version est complexe sans utiliser des outils que vous ne verrez qu'en SE3.
+\li La modification du fichier game.c devrait être suffisante (étonnamment).
+\li Penser à conserver une liste des personnages qui combattent et le pid du processus calculant le combat.
+\li Attention à ne pas faire se déplacer un personnage combattant.
+\li il faut penser à retourner le résultat du combat au processus principal. Seuls les points de vie des deux participants suffisent et, bonne nouvelle, 100 + 100 < 255. Vous pouvez donc utiliser le code de retour d'un processus.
+\li Attention, si vous avez d'autres processus lancés pour d'autres tâches (comme demander un mouvement) vous devrez vérifier au retour de chaque "wait" de votre programme que vous faites le bon traitement.
+
+Une démonstration est disponible : 
+\verbatim 
+ 	  $ ./bin/Dedalus-v4 -m ./data/map_mini_f_mult -M 40 -d 100000
+\endverbatim 
+
+\subsection v5 Version 5 (note maximale : 25/20)
+
+Ici, chaque joueur peut interagir avec son terminal d'affichage propre. Cette interaction permet à chaque joueur de démarrer son personnage en début de partie sans attendre les autres, de continuer après un combat... 
+Les éventuels Minotaures ne démarrent pas leur déplacement avant qu'au moins un joueur ait débuté la partie.
+Une version "ultime" permettrait même de faire une commander manuelle d'un joueur en utilisant les touches du clavier.
+
+Aides :
+\li la méthode ::display_wait_user peut être un bon point de départ pour capturer une entrée utilisateur depuis un flux.
+\li Pas d'autres aides. C'est la version [\b Munchkin !](https://en.wikipedia.org/w/index.php?title=Munchkin_(role-playing_games))
+
+Cette version est la seule ne disposant pas d'une démonstration.
+
+\section Conclusion
+
+[\b YAPUKA.](http://dictionnaire.sensagent.leparisien.fr/yapuka/fr-fr/) !
+
+*/

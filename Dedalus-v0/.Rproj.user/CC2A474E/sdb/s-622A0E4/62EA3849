@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#include <stdio.h>\n#include <stdlib.h>\n#include <stdbool.h>\n#include \"avl.h\"\nint _print_t(T_Tree tree, int is_left, int offset, int depth, char s[20][255]){\n    char b[20];\n    int width = 5;\n\n    if (!tree) return 0;\n\n    sprintf(b, \"(%03d)\", tree->val);\n\n    int left  = _print_t(tree->g,  1, offset,                depth + 1, s);\n    int right = _print_t(tree->d, 0, offset + left + width, depth + 1, s);\n\n#ifdef COMPACT\n    for (int i = 0; i < width; i++)\n        s[depth][offset + left + i] = b[i];\n\n    if (depth && is_left) {\n\n        for (int i = 0; i < width + right; i++)\n            s[depth - 1][offset + left + width/2 + i] = '-';\n\n        s[depth - 1][offset + left + width/2] = '.';\n\n    } else if (depth && !is_left) {\n\n        for (int i = 0; i < left + width; i++)\n            s[depth - 1][offset - width/2 + i] = '-';\n\n        s[depth - 1][offset + left + width/2] = '.';\n    }\n#else\n    for (int i = 0; i < width; i++)\n        s[2 * depth][offset + left + i] = b[i];\n\n    if (depth && is_left) {\n\n        for (int i = 0; i < width + right; i++)\n            s[2 * depth - 1][offset + left + width/2 + i] = '-';\n\n        s[2 * depth - 1][offset + left + width/2] = '+';\n        s[2 * depth - 1][offset + left + width + right + width/2] = '+';\n\n    } else if (depth && !is_left) {\n\n        for (int i = 0; i < left + width; i++)\n            s[2 * depth - 1][offset - width/2 + i] = '-';\n\n        s[2 * depth - 1][offset + left + width/2] = '+';\n        s[2 * depth - 1][offset - width/2 - 1] = '+';\n    }\n#endif\n\n    return left + width + right;\n}\n\nvoid print_t(T_Tree tree)\n{\n    char s[20][255];\n    for (int i = 0; i < 20; i++)\n        sprintf(s[i], \"%200s\", \" \");\n\n    _print_t(tree, 0, 0, 0, s);\n\n    for (int i = 0; i < 20; i++)\n        printf(\"%s\\n\", s[i]);\n}\n",
+    "created" : 1554194880018.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1924149149",
+    "id" : "62EA3849",
+    "lastKnownWriteTime" : 1553677665,
+    "last_content_update" : 1553677665,
+    "path" : "~/SDD/tpavl/afficherarbre.c",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "c"
+}

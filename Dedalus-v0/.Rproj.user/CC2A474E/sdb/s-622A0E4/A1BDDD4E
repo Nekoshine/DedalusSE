@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "/* En-tete de arbre\n   ----------------\n   objectif : definir le TAA arbre */\n\n#ifndef AVL_H\n#define AVL_H\n#define max 20\n/* type noeud incomplet */\ntypedef struct s_node T_node;\n/* type pointeur sur noeud */\ntypedef T_node * T_Tree;\n/* type noeud complet */\nstruct s_node {\n    int val;\n    T_Tree g,d;\n    int eq; // dans -1 0 1\n};\n\n\nT_Tree arbre_vide();\nvoid insertion_feuille(T_Tree * T, int i);\nbool recherche(T_Tree T, int i);\nvoid lecture_arbre(T_Tree T);\nvoid print_t(T_Tree);\nint _print_t(T_Tree, int , int , int , char[20][255]);\n#endif",
+    "created" : 1554194882874.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4093162555",
+    "id" : "A1BDDD4E",
+    "lastKnownWriteTime" : 1553078582,
+    "last_content_update" : 1553078582,
+    "path" : "~/SDD/tpavl/avl.h",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "h"
+}
